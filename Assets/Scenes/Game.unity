@@ -121,6 +121,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &305026334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 305026335}
+  - component: {fileID: 305026336}
+  - component: {fileID: 305026337}
+  m_Layer: 0
+  m_Name: AuxBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &305026335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305026334}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 647011199}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &305026336
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305026334}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.48003584, y: 0.055105507, z: 0.3899582}
+  m_Center: {x: 0.901912, y: -0.00000019371508, z: 0.000000008089946}
+--- !u!114 &305026337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305026334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe6288b1d5fed043afdfbafb19333e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &385415677
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -371,7 +428,7 @@ RectTransform:
   m_GameObject: {fileID: 616435359}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5125, y: 1.1875, z: 1}
   m_Children:
   - {fileID: 653386588}
   m_Father: {fileID: 1434330417}
@@ -379,7 +436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 60, y: 100}
+  m_AnchoredPosition: {x: 9, y: -29}
   m_SizeDelta: {x: 415.02692, y: 850.7655}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &616435361
@@ -864,11 +921,11 @@ MonoBehaviour:
   activated: 0
   onTarget: 0
   posIni: {x: 0, y: 0, z: 0}
+  gm: {fileID: 541656463}
   shoot: {fileID: 8300000, guid: 0b398ee9de4044b4e90ebd029bc29de9, type: 3}
   hit: {fileID: 8300000, guid: 82a06dce7b61c244f92fe206752da5a9, type: 3}
   miss: {fileID: 8300000, guid: 4a9a7ff9b51217a45bd7a62e11a3ebff, type: 3}
   audio: {fileID: 0}
-  gm: {fileID: 541656463}
 --- !u!54 &1775377874
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ public class ArrowController : MonoBehaviour
 {
     [Header("Variable")]
     public float speed;
+
     public bool activated;
     public bool onTarget;
 
@@ -19,6 +20,7 @@ public class ArrowController : MonoBehaviour
 
     [Header("Audio")]
     public AudioClip shoot;
+
     public AudioClip hit;
     public AudioClip miss;
     public AudioSource audio;
@@ -50,7 +52,6 @@ public class ArrowController : MonoBehaviour
             audio.PlayOneShot(shoot);
             rb.isKinematic = false;
 
-            // rb.AddForce(new Vector3(-1, 0, 0) * speed * Time.deltaTime);
             this.GetComponent<Rigidbody>().velocity = new Vector3(-30, 0, 0);
         }
     }
@@ -67,15 +68,6 @@ public class ArrowController : MonoBehaviour
             rb.isKinematic = true;
             GMScript.score += 1;
             this.transform.SetParent(collision.transform);
-        }
-
-        if (collision.gameObject.tag == "Arrow" && collision.gameObject.GetComponent<ArrowController>().onTarget && activated)
-        {
-            Debug.Log("Hit Arrow");
-            audio.PlayOneShot(miss);
-            //  collision.gameObject.transform.localScale = new Vector3(5, 5, 5);
-            Time.timeScale = 0;
-            GMScript.finish = true;
         }
     }
 }
