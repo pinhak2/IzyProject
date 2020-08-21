@@ -1,27 +1,33 @@
-﻿using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ArrowController : MonoBehaviour
 {
-    
+    [Header("Variable")]
     public float speed;
-    public bool activated, onTarget;
+    public bool activated;
+    public bool onTarget;
+
+    [Header("Vectors")]
     public Vector3 posIni;
+
     private Rigidbody rb;
     private Vector3 euLer;
     private Quaternion currentRotation;
-    public AudioClip shoot, hit, miss;
-    public AudioSource audio;
-   
 
+    [Header("Game Objects")]
+    public GameObject gm;
+
+    [Header("Audio")]
+    public AudioClip shoot;
+    public AudioClip hit;
+    public AudioClip miss;
+    public AudioSource audio;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-         audio = this.gameObject.GetComponent<AudioSource>();
+        this.transform.SetParent(gm.transform);
+        audio = this.gameObject.GetComponent<AudioSource>();
         onTarget = false;
         this.transform.localScale = new Vector3(0.5f, 0.75f, 1);
         euLer = new Vector3(90, 0, 0);
@@ -34,7 +40,7 @@ public class ArrowController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R) && !activated && !onTarget)
         {
@@ -43,10 +49,9 @@ public class ArrowController : MonoBehaviour
             activated = true;
             audio.PlayOneShot(shoot);
             rb.isKinematic = false;
-         
-          
+
             // rb.AddForce(new Vector3(-1, 0, 0) * speed * Time.deltaTime);
-            this.GetComponent<Rigidbody>().velocity = new Vector3(-30,0,0);
+            this.GetComponent<Rigidbody>().velocity = new Vector3(-30, 0, 0);
         }
     }
 
@@ -64,14 +69,13 @@ public class ArrowController : MonoBehaviour
             this.transform.SetParent(collision.transform);
         }
 
-        if (collision.gameObject.tag == "Arrow" && collision.gameObject.GetComponent<ArrowController>().onTarget && activated )
+        if (collision.gameObject.tag == "Arrow" && collision.gameObject.GetComponent<ArrowController>().onTarget && activated)
         {
-
             Debug.Log("Hit Arrow");
             audio.PlayOneShot(miss);
             //  collision.gameObject.transform.localScale = new Vector3(5, 5, 5);
             Time.timeScale = 0;
+            GMScript.finish = true;
         }
-
     }
 }
