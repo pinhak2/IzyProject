@@ -8,7 +8,6 @@ public class GMScript : MonoBehaviour
     [Header("Main objects")]
     public GameObject arrow;
     public GameObject target;
-    public GameObject bow;
 
     [Header("Canvas")]
     public Text scoreText;
@@ -61,7 +60,6 @@ public class GMScript : MonoBehaviour
     private void endingMethod()
     {
         target.gameObject.GetComponent<MeshRenderer>().enabled = false;
-        bow.gameObject.GetComponent<MeshRenderer>().enabled = false;
         scoreText.GetComponent<Text>().enabled = false;
         foreach (GameObject a in arrowlist)
         {
