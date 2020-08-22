@@ -23,9 +23,11 @@ public class ArrowController : MonoBehaviour
 
     [Header("Variable")]
     public float speed;
+
     private Quaternion currentRotation;
     private Vector3 euLer;
     private Rigidbody rb;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Target")

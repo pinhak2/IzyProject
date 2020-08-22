@@ -8,6 +8,7 @@ public class GMScript : MonoBehaviour
     [Header("Main objects")]
     public GameObject arrow;
     public GameObject target;
+    public GameObject coll;
 
     [Header("Canvas")]
     public Text scoreText;
