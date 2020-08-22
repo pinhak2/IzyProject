@@ -2,28 +2,45 @@
 
 public class ArrowController : MonoBehaviour
 {
-    [Header("Variable")]
-    public float speed;
-
     public bool activated;
+
+    public AudioSource audio;
+
+    [Header("Game Objects")]
+    public GameObject gm;
+
+    public AudioClip hit;
+
+    public AudioClip miss;
+
     public bool onTarget;
 
     [Header("Vectors")]
     public Vector3 posIni;
 
-    private Rigidbody rb;
-    private Vector3 euLer;
-    private Quaternion currentRotation;
-
-    [Header("Game Objects")]
-    public GameObject gm;
-
     [Header("Audio")]
     public AudioClip shoot;
 
-    public AudioClip hit;
-    public AudioClip miss;
-    public AudioSource audio;
+    [Header("Variable")]
+    public float speed;
+    private Quaternion currentRotation;
+    private Vector3 euLer;
+    private Rigidbody rb;
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Target")
+        {
+            Debug.Log("Hit Target");
+            this.gameObject.GetComponent<BoxCollider>().size = new Vector3(1.5f, 0.1f, 0.05f);
+            onTarget = true;
+            activated = false;
+            audio.PlayOneShot(hit);
+            rb.isKinematic = true;
+            GMScript.score += 1;
+            collision.gameObject.transform.position = Vector3.Lerp(collision.gameObject.transform.position, collision.gameObject.transform.position + new Vector3(-0.4f, 0, 0), 6 * Time.deltaTime);
+            this.transform.SetParent(collision.transform);
+        }
+    }
 
     // Start is called before the first frame update
     private void Start()
@@ -53,21 +70,6 @@ public class ArrowController : MonoBehaviour
             rb.isKinematic = false;
 
             this.GetComponent<Rigidbody>().velocity = new Vector3(-30, 0, 0);
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Target")
-        {
-            Debug.Log("Hit Target");
-            this.gameObject.GetComponent<BoxCollider>().size = new Vector3(1.5f, 0.1f, 0.05f);
-            onTarget = true;
-            activated = false;
-            audio.PlayOneShot(hit);
-            rb.isKinematic = true;
-            GMScript.score += 1;
-            this.transform.SetParent(collision.transform);
         }
     }
 }
