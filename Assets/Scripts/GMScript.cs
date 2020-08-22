@@ -61,6 +61,7 @@ public class GMScript : MonoBehaviour
     private void endingMethod()
     {
         target.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        coll.gameObject.GetComponent<MeshRenderer>().enabled = false;
         scoreText.GetComponent<Text>().enabled = false;
         foreach (GameObject a in arrowlist)
         {
